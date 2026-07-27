@@ -26,7 +26,12 @@ export default function BackgroundAudio() {
 
   return (
     <div className="fixed bottom-2 right-2 z-50">
-      <audio ref={audioRef} src="/audio/prevue-theme.mp3" loop preload="auto" />
+      <audio
+        ref={audioRef}
+        src={`${import.meta.env.BASE_URL}audio/audio.mp3`}
+        loop
+        preload="auto"
+      />
 
       <button
         onClick={toggleAudio}
