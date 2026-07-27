@@ -1,1 +1,21 @@
 @import "tailwindcss";
+
+/* Define the vertical scroll keyframes */
+@keyframes scrollVertical {
+  0% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+/* Custom utility class for the marquee */
+.animate-scroll-vertical {
+  animation: scrollVertical 40s linear infinite;
+}
+
+/* Optional: Pause scrolling when hovering with a mouse */
+.animate-scroll-vertical:hover {
+  animation-play-state: paused;
+}
