@@ -1,16 +1,24 @@
-# React + Vite
+# 📺 1990s Cable Channel Guide (Prevue Guide Clone)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A high-fidelity web recreation of the classic 1990s electronic program guide (Prevue Guide / Sneak Prevue). Built with React, Tailwind CSS, and Vite, this project captures the iconic CRT aesthetic, split-screen layouts, local cable advertisements, and background music loops of 90s television.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🌟 Features
 
-## React Compiler
+*   **Split-Screen Visual Parity:** Perfectly matched 16:9 ratio containers for local sponsor ads and rolling commercial video loops.
+*   **Dynamic Local Advertisements:** Rotating regional sponsor text ads complete with era-appropriate humor and 919 Triangle area details.
+*   **Retro Aesthetics:** Styled with scanline overlays, CRT-inspired radial gradients, and classic typography.
+*   **Background Audio Player:** Built-in audio controller designed to navigate browser autoplay policies and loop authentic channel guide tunes.
+*   **Optimized Static Assets:** Compressed low-bitrate media tailored for fast web streaming and low-fi nostalgia.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🛠️ Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+*   **Framework:** [React](https://react.dev/) + [Vite](https://vitejs.dev/)
+*   **Styling:** [Tailwind CSS](https://tailwindcss.com/)
+*   **Deployment:** GitHub Pages
+*   **Asset Pipeline:** Handbrake / `ffmpeg` low-bitrate encoding for 90s CRT video fidelity
+
+---
