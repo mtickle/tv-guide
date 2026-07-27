@@ -2,12 +2,12 @@
 
 /* Define the vertical scroll keyframes */
 @keyframes scrollVertical {
-  0% {
-    transform: translateY(0%);
-  }
-  100% {
-    transform: translateY(-50%);
-  }
+  0% { transform: translateY(0%); }
+  100% { transform: translateY(-50%); }
+}
+
+.animate-scroll-vertical {
+  animation: scrollVertical 30s linear infinite;
 }
 
 /* Custom utility class for the marquee */

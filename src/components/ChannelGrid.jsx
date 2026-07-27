@@ -1,43 +1,71 @@
+function getColSpanClass(spanNeeded) {
+  const spans = {
+    3: "col-span-3",
+    6: "col-span-6",
+    9: "col-span-9",
+  };
+  return spans[spanNeeded] || "col-span-3";
+}
+
+// src/components/ChannelGrid.jsx
+
 export default function ChannelGrid({ channels }) {
-  // Duplicating the list ensures a seamless infinite scroll loop
   const displayChannels = [...channels, ...channels];
 
   return (
     <div className="relative flex-1 overflow-hidden bg-blue-950 font-mono text-white select-none">
       <div className="animate-scroll-vertical flex flex-col">
-        {displayChannels.map((channel, idx) => (
-          <div
-            key={`${channel.number}-${idx}`}
-            className="grid grid-cols-12 border-b border-blue-800 text-sm py-2 px-2 items-center bg-blue-950 hover:bg-blue-900 transition-colors"
-          >
-            {/* Channel Number */}
-            <div className="col-span-1 font-bold text-yellow-400 text-center text-base">
-              {channel.number}
-            </div>
+        {displayChannels.map((channel, idx) => {
+          let totalSpan = 0;
 
-            {/* Network Call Sign */}
+          return (
             <div
-              className={`col-span-2 text-center font-bold px-1 py-0.5 rounded text-xs ${channel.logoBg}`}
+              key={`${channel.number}-${idx}`}
+              // REMOVE h-10/h-16 and replace with py-3 (or py-4 for even chunkier padding)
+              className="grid grid-cols-12 py-3 items-center border-b border-blue-800 shrink-0 bg-blue-950"
             >
-              {channel.name}
-            </div>
+              {/* Channel metadata */}
+              <div className="col-span-1 text-center font-bold text-yellow-400 text-lg">
+                {channel.number}
+              </div>
+              <div
+                className={`col-span-1 text-center text-sm font-bold py-1 px-2 rounded-sm ${channel.logoBg}`}
+              >
+                {channel.name}
+              </div>
 
-            {/* Program Listings */}
-            <div className="col-span-9 grid grid-cols-9 gap-1 pl-2">
-              {channel.shows.map((show, sIdx) => {
-                const colSpan = show.span === 2 ? "col-span-6" : "col-span-3";
-                return (
-                  <div
-                    key={sIdx}
-                    className={`${colSpan} truncate px-2 py-1 bg-blue-900/60 border border-blue-700/50 rounded-sm text-xs font-medium text-yellow-100`}
-                  >
-                    {show.title}
-                  </div>
-                );
-              })}
+              {/* Grid listings */}
+              <div className="col-span-10 grid grid-cols-9 gap-1 h-full items-center overflow-hidden pr-2 pl-2">
+                {channel.shows.map((show, sIdx) => {
+                  const spanNeeded = Math.min(
+                    Math.round(show.duration / 10),
+                    9 - totalSpan
+                  );
+
+                  if (spanNeeded <= 0) return null;
+
+                  totalSpan += spanNeeded;
+                  const colClass = getColSpanClass(spanNeeded);
+
+                  return (
+                    <div
+                      key={sIdx}
+                      //Increase inner padding with py-2 and font size with text-sm/text-base
+                      className={`${colClass} truncate py-2 px-3 flex items-center justify-between bg-blue-900/60 border border-blue-700/50 rounded-sm text-sm font-medium text-yellow-100`}
+                    >
+                      <span className="truncate">{show.title}</span>
+                      {show.duration > spanNeeded * 10 && (
+                        <span className="text-yellow-400 font-bold ml-1">
+                          &gt;
+                        </span>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );

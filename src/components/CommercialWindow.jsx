@@ -32,7 +32,7 @@ export default function CommercialWindow() {
   const currentAd = LOCAL_ADS[adIndex];
 
   return (
-    <div className="h-1/2 w-full bg-black relative border-b-4 border-yellow-500 flex flex-col items-center justify-center p-6 select-none overflow-hidden">
+    <div className="relative h-full w-full bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-900 via-blue-950 to-black p-8 flex items-center justify-center select-none overflow-hidden">
       {/* Visual background effect */}
       <div className="absolute inset-0 bg-gradient-to-t from-blue-950 via-black to-blue-950 opacity-80" />
 
